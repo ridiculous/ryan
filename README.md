@@ -36,9 +36,10 @@ ryan.funcs.first.name
 ```ruby
 func = ryan.func_by_name(:call)
 #=> #<Ryan::InstanceFunc:0x007fd49c10d8d0 @sexp=...>
-func.assignments
-#=> [#<Ryan::Assignment:0x007fd49c317360 @sexp=s(:iasgn, :@duder, ...)>]
-func.assignments.first.to_s
+func.assignments.length
+#=> 1
+func.assignments.first.name
+#=> :@duder
 ```
 
 ### Conditions

@@ -7,12 +7,12 @@ class Ryan
     end
 
     def to_s
-      "assigns #{ivar_name}"
+      "assigns #{name}"
     end
 
     # @example s(:iasgn, :@duder, s(:if, ...)
     # @example s(:op_asgn_or, s(:ivar, :@report), ...)
-    def ivar_name
+    def name
       if sexp.first == :iasgn
         sexp[1]
       elsif sexp.first == :op_asgn_or

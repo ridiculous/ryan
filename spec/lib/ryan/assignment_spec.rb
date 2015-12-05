@@ -13,7 +13,7 @@ describe Ryan::Assignment do
   describe "#to_s" do
   end
 
-  describe "#ivar_name" do
+  describe "#name" do
     context "when (sexp.first == :iasgn)" do
       before {}
       it "returns sexp[1]" do
