@@ -18,9 +18,25 @@ class Ryan
   def_delegators :const,
     :name, :funcs, :type, :initialization_args, :func_by_name, :class?, :module?
 
+  def self.root
+    current_file_name = __FILE__
+    path_to_current_file = File.expand_path(current_file_name)
+    root_path = Pathname.new(path_to_current_file) + "../.."
+
+    return root_path
+  end
+
   # @param [Pathname, String] file
-  def initialize(file)
-    @sexp = RubyParser.new.parse File.read(file)
+  def initialize(file, mode=:file)
+    parsable_code = case mode
+    when :text
+      file
+    else # for :default :file and fallback
+      File.read(file)
+    end
+
+    @sexp = RubyParser.new.parse(parsable_code)
     @const = Const.new(sexp)
   end
+
 end
