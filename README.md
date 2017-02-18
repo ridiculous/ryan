@@ -1,21 +1,22 @@
 # Ryan
 
-A wrapper around the awesome [RubyParser](https://github.com/seattlerb/ruby_parser) gem that provides an OO interface for 
+A wrapper around the awesome [RubyParser](https://github.com/seattlerb/ruby_parser) gem that provides an OO interface for
 reading Ruby code.
 
 ## Installation
 
 ```ruby
-gem 'ryan'
+gem 'ryan', '~> 1.1.0'
 ```
 
 ## Usage
 
 Give Ryan a Ruby file to play with. Test it out in an IRB session with `bin/console`
+You can also pass Ruby code text directly using `Ryan.new("ruby code", :text)`
 
 ```ruby
-ryan = Ryan.new FIXTURE_ROOT.join('report.rb')
-ryan.name 
+ryan = Ryan.new FIXTURE_ROOT.join('report.rb') # or Ryan.new(File.read(FIXTURE_ROOT.join('report.rb')), :text)
+ryan.name
 #=> "Report"
 ryan.class?
 #=> true
@@ -23,11 +24,11 @@ ryan.module?
 #=> false
 ryan.initialization_args
 #=> [:message]
-ryan.funcs.length 
+ryan.funcs.length
 #=> 12
-ryan.funcs.reject(&:private?).length 
+ryan.funcs.reject(&:private?).length
 #=> 10
-ryan.funcs.first.name 
+ryan.funcs.first.name
 #=> :enqueue
 ```
 
@@ -92,7 +93,7 @@ nested_condition.if_text
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake` to run the tests. 
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake` to run the tests.
 You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 ## Contributing
