@@ -19,23 +19,17 @@ class Ryan
     :name, :funcs, :type, :initialization_args, :func_by_name, :class?, :module?
 
   def self.root
-    current_file_name = __FILE__
-    path_to_current_file = File.expand_path(current_file_name)
-    root_path = Pathname.new(path_to_current_file) + "../.."
+    root_path = Pathname.new File.expand_path('../..', __FILE__)
 
     return root_path
   end
 
   # @param [Pathname, String] file
-  def initialize(file, mode=:file)
-    parsable_code = case mode
-    when :text
-      file
-    else # for :default :file and fallback
-      File.read(file)
-    end
+  def initialize(input)
+    # attempts to read a file if a path is given, otherwise threats input as ruby code string.
+    input = File.read(input) if File.file?(input)
 
-    @sexp = RubyParser.new.parse(parsable_code)
+    @sexp = RubyParser.new.parse(input)
     @const = Const.new(sexp)
   end
 

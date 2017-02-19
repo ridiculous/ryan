@@ -11,11 +11,10 @@ gem 'ryan', '~> 1.1.0'
 
 ## Usage
 
-Give Ryan a Ruby file to play with. Test it out in an IRB session with `bin/console`
-You can also pass Ruby code text directly using `Ryan.new("ruby code", :text)`
+Give Ryan a Ruby file or code string to play with. Test it out in an IRB session with `bin/console`
 
 ```ruby
-ryan = Ryan.new FIXTURE_ROOT.join('report.rb') # or Ryan.new(File.read(FIXTURE_ROOT.join('report.rb')), :text)
+ryan = Ryan.new FIXTURE_ROOT.join('report.rb') # or Ryan.new("<valid ruby code here>")
 ryan.name
 #=> "Report"
 ryan.class?

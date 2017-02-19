@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased, 1.1.0] - 2017-02-19
 ### Added
 - Explicit Ruby version requirement with `spec.required_ruby_version = '>= 1.9.3'`
-- Allowed initialization straight from text with `Ryan.new("ruby code", :text)`
+- Allowed `Ryan.new` initializer to also accept raw ruby code string instead of just path to file
 - Ryan.root method to make things easier
 
 ## [1.0.0] - 2015-12-05
