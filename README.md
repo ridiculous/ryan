@@ -1,4 +1,4 @@
-# Ryan
+# Ryan [![Gem Version](https://badge.fury.io/rb/ryan.svg)](http://badge.fury.io/rb/ryan) [![Build Status](https://travis-ci.org/ridiculous/ryan.svg)](https://travis-ci.org/ridiculous/ryan)
 
 A wrapper around the awesome [RubyParser](https://github.com/seattlerb/ruby_parser) gem that provides an OO interface for
 reading Ruby code.
