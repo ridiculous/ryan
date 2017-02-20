@@ -19,12 +19,10 @@ class Ryan
     :name, :funcs, :type, :initialization_args, :func_by_name, :class?, :module?
 
   def self.root
-    root_path = Pathname.new File.expand_path('../..', __FILE__)
-
-    return root_path
+    root_path = Pathname.new File.expand_path('../..', __FILE__)    
   end
 
-  # @param [Pathname, String] file
+  # @param [Pathname, String] input
   def initialize(input)
     # attempts to read a file if a path is given, otherwise threats input as ruby code string.
     input = File.read(input) if File.file?(input)
