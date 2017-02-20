@@ -26,7 +26,7 @@ describe Ryan::Const do
 
           it 'returns the correct module name' do
             expect(subject.name).to eq 'Mixins::Helpers'
-            expect(Kernel.const_get(subject.name)).to eq Mixins::Helpers
+            expect(lookup_constant(subject.name)).to eq Mixins::Helpers
           end
         end
       end
@@ -42,7 +42,7 @@ describe Ryan::Const do
 
         it 'returns the class names in the file' do
           expect(subject.name).to eq 'ReservationsController'
-          expect(Kernel.const_get(subject.name)).to eq ReservationsController
+          expect(lookup_constant(subject.name)).to eq ReservationsController
         end
       end
 
@@ -51,7 +51,7 @@ describe Ryan::Const do
 
         it 'returns the full modularized name' do
           expect(subject.name).to eq 'Extensions::Array'
-          expect(Kernel.const_get(subject.name)).to eq Extensions::Array
+          expect(lookup_constant(subject.name)).to eq Extensions::Array
         end
       end
 
@@ -68,7 +68,7 @@ describe Ryan::Const do
 
         it 'returns the class name' do
           expect(subject.name).to eq 'Admin::Super::UsersController'
-          expect(Kernel.const_get(subject.name)).to eq Admin::Super::UsersController
+          expect(lookup_constant(subject.name)).to eq Admin::Super::UsersController
         end
 
         context 'with more inheritance' do
@@ -76,7 +76,7 @@ describe Ryan::Const do
 
           it 'returns the class name' do
             expect(subject.name).to eq 'Admin::Setup::Users::PofilesController'
-            expect(Kernel.const_get(subject.name)).to eq Admin::Setup::Users::PofilesController
+            expect(lookup_constant(subject.name)).to eq Admin::Setup::Users::PofilesController
           end
         end
       end
