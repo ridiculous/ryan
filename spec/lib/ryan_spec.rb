@@ -1,6 +1,7 @@
-require "spec_helper"
-# rspec spec/lib/ryan.rb
 describe Ryan do
+  subject { described_class.new(input) }
+
+  let(:input) { described_class.root.join('spec/fixtures/report.rb') }
 
   describe ".root" do
     it "should return the path to gem's root" do
@@ -9,20 +10,15 @@ describe Ryan do
   end
 
   describe "#initialize" do
-    let(:path) { described_class.root + "spec/fixtures/report.rb" }
-
     context "when reading parsable code from a file, the v1 default" do
-      subject { described_class.new(path) }
-
       it "should return an instance of Ryan" do
         expect(subject.class).to eq described_class
         expect(subject.name).to eq "Report"
       end
     end
 
-    context "when initialized with text argument and mode=:text" do
-      let(:text) { File.read(path) }
-      subject { described_class.new(text, :text) }
+    context "when initialized with text input" do
+      let(:input) { File.read(described_class.root.join('spec/fixtures/report.rb')) }
 
       it "should work as if the code was read from a file - correctly set #const and return Ryan instance" do
         expect(subject.class).to eq described_class
@@ -30,9 +26,8 @@ describe Ryan do
       end
     end
 
-    context "when initialized with handwritten ruby code" do
-      let(:text) { "class User; def method; end; end" }
-      subject { described_class.new(text, :text) }
+    context "when initialized with raw ruby code" do
+      let(:input) { "class User; def method; end; end" }
 
       it "should work as if the code was read from a file - correctly set #const and return Ryan instance" do
         expect(subject.class).to eq described_class

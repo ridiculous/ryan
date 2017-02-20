@@ -16,3 +16,7 @@ RSpec.configure do |config|
   config.raise_errors_for_deprecations!
   # config.filter_run focus: true
 end
+
+def lookup_constant(const)
+  const.to_s.split('::').inject(Object) { |k, part| k.const_get(part) }
+end
