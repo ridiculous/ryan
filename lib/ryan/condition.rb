@@ -59,8 +59,8 @@ class Ryan::Condition
 
   def edit_return_text(txt)
     txt = txt.to_s
-    txt.sub! /^return\b/, 'returns'
-    txt.sub! /^returns\s*$/, 'returns nil'
+    txt = txt.sub /^return\b/, 'returns'
+    txt = txt.sub /^returns\s*$/, 'returns nil'
     if txt.include?(' = ')
       txt = "assigns #{txt}"
     elsif !txt.empty? and txt !~ /^return/
@@ -89,7 +89,9 @@ class Ryan::Condition
   def create_nested_conditions
     nc = Set.new
     s = sexp.drop(1)
-    s.flatten.include?(:if) && s.deep_each do |exp|
+    sexp = s
+    sexp = Sexp.new(s) unless s.respond_to?(:deep_each)
+    s.flatten.include?(:if) && sexp.deep_each do |exp|
       Ryan::SexpDecorator.new(exp).each_sexp_condition do |node|
         nc << self.class.new(node)
       end

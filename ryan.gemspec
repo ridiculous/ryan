@@ -21,10 +21,10 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.3'
 
   spec.add_dependency 'ruby_parser', '>= 3.7.0', '< 4.0.0'
-  spec.add_dependency 'ruby2ruby', '~> 2.2'
+  spec.add_dependency 'ruby2ruby', '~> 2.5'
 
-  spec.add_development_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", "~> 2.0"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", ">= 3.2", "< 4"
-  spec.add_development_dependency 'pry', '~> 0.10.4'
+  spec.add_development_dependency 'pry', '~> 0.14'
 end
