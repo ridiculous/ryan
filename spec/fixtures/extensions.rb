@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Extensions
   def load_and_authorize_item!
     coupon = Coupon.find_by_code(@code)

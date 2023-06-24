@@ -1,14 +1,19 @@
 class Ryan::Const
   CLASS_MOD_DEFS = { class: :class, module: :module }
-  CONSTANT_DEFS = { cdecl: :class }.merge CLASS_MOD_DEFS
-  PRIVATE_DEFS = [:private, :protected]
+  CONSTANT_DEFS  = { cdecl: :class }.merge CLASS_MOD_DEFS
+  PRIVATE_DEFS   = [:private, :protected]
 
   attr_reader :sexp
 
   # @param [Sexp] sexp
   def initialize(sexp)
-    sexp = sexp[2] if sexp[0] == :block
-    @sexp = sexp
+    if sexp[0] == :block
+      # This is common when the file ha require or other code at the top before the class def,
+      # in which case, grab the last element of the block and assume that's the class def.
+      @sexp = sexp[sexp.size - 1]
+    else
+      @sexp = sexp
+    end
   end
 
   # @description Extracts the class/mod definition from a Sexp object. Handles stuff that looks like:

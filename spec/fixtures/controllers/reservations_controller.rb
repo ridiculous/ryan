@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+require 'csv'
 require_relative 'application_controller'
 
 class ReservationsController < ApplicationController
