@@ -1,3 +1,4 @@
+require 'rake/release'
 $LOAD_PATH.unshift './lib'
 require 'ryan'
 require 'rspec/core/rake_task'

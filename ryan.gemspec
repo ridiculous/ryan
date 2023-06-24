@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ryan Buckley"]
   spec.email         = ["arebuckley@gmail.com"]
 
-  spec.summary       = %q{Ryan meet Ruby}
-  spec.description   = %q{A wrapper around the RubyParser gem}
+  spec.summary       = %q{Ryan meets Ruby}
+  spec.description   = %q{Ryan turns Ruby code files into objects that can describe themselves}
   spec.homepage      = "https://github.com/ridiculous/ryan"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", ">= 3.2", "< 4"
   spec.add_development_dependency 'pry', '~> 0.14'
+  spec.add_development_dependency 'rake-release', '~> 1.3'
 end
